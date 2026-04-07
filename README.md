@@ -56,7 +56,7 @@ In the root directory:
 | UPS provider | `src/Service/ShippingProvider/UpsShippingProvider.php` | `POST upsfake.com/register` with `order_id`, `country`, `street`, `city`, `post_code` |
 | Omniva provider | `src/Service/ShippingProvider/OmnivaShippingProvider.php` | `GET omnivafake.com/pickup/find` → `POST omnivafake.com/register` |
 | DHL provider | `src/Service/ShippingProvider/DhlShippingProvider.php` | `POST dhlfake.com/register` with `order_id`, `country`, `address`, `town`, `zip_code` |
-| Mock HTTP client | `src/Http/MockHttpClient.php` | Implements `GuzzleHttp\ClientInterface`; returns hard-coded responses — no real HTTP calls |
+| Mock HTTP client | `src/Http/MockHttpClient.php` | Implements `GuzzleHttp\ClientInterface`; returns hard-coded responses |
 
 ### Dependency Injection wiring (`config/services.yaml`)
 
@@ -67,12 +67,12 @@ In the root directory:
 
 ### Tests (`tests/Unit/`)
 
-- `Entity/OrderTest.php` — verifies `Order` fields and default provider key.
-- `Service/OrderTest.php` — verifies `registerShipping()` delegates to the correct provider.
-- `Service/ShippingProvider/UpsShippingProviderTest.php` — verifies correct HTTP method, URL, and field names.
-- `Service/ShippingProvider/OmnivaShippingProviderTest.php` — verifies two-step call (GET pickup point → POST register).
-- `Service/ShippingProvider/DhlShippingProviderTest.php` — verifies DHL-specific field mapping (`address`, `town`, `zip_code`).
-- `Service/ShippingProvider/ShippingProviderRegistryTest.php` — verifies provider resolution by key and unknown key exception.
+- `Entity/OrderTest.php` - verifies `Order` fields and default provider key.
+- `Service/OrderTest.php` - verifies `registerShipping()` delegates to the correct provider.
+- `Service/ShippingProvider/UpsShippingProviderTest.php` - verifies correct HTTP method, URL, and field names.
+- `Service/ShippingProvider/OmnivaShippingProviderTest.php` - verifies two-step call (GET pickup point → POST register).
+- `Service/ShippingProvider/DhlShippingProviderTest.php` - verifies DHL-specific field mapping (`address`, `town`, `zip_code`).
+- `Service/ShippingProvider/ShippingProviderRegistryTest.php` - verifies provider resolution by key and unknown key exception.
 
 ### Running the command
 
